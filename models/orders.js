@@ -5,8 +5,16 @@ module.exports = (sequelize, DataTypes) => {
     uid: DataTypes.INTEGER
   }, {});
   Orders.associate = function(models) {
-    Orders.belongsTo(models.User, {foreignKey: 'uid'}),
-    Orders.hasMany(models.OrderProducts, {foreignKey: 'orderId'})
+    Orders.belongsTo(models.User, {foreignKey: "uid"}),
+    Orders.hasMany(models.OrderProducts, {foreignKey: "orderId"} )
   };
+
+  sequelize.sync(
+    Orders.create({
+      status: "pronto",
+      uid: 1
+    })
+  )
+
   return Orders;
 };

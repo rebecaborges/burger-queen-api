@@ -4,15 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    User.hasMany(models.Orders, {foreignKey: 'uid'})
+    User.hasMany(models.Orders, {foreignKey: "orderId"})
   };
 
   sequelize.sync(
     User.create({
-      email: "purple@gmail.com"
+      email: "neusa@gmail.com"
     })
   )
 
-  
   return User;
 };
